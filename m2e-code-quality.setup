@@ -26,6 +26,10 @@
     <description>Set the heap space needed to work with the projects of ${scope.project.label}</description>
   </setupTask>
   <setupTask
+      xsi:type="setup:EclipseIniTask"
+      option="-Doomph.redirection.m2e-code-quality"
+      value="https://raw.githubusercontent.com/m2e-code-quality/m2e-code-quality/master/->${git.clone.location|uri}/"/>
+  <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
       defaultValue="Photon"
@@ -67,7 +71,7 @@
         name="${scope.project.label}"
         activeRepositoryList="${eclipse.target.platform}">
       <requirement
-          name="org.eclipse.sdk.feature.group"/>
+          name="org.eclipse.jdt.feature.group"/>
       <requirement
           name="edu.umd.cs.findbugs.plugin.eclipse.feature.group"/>
       <requirement
@@ -99,6 +103,8 @@
             url="https://dl.bintray.com/pmd/pmd-eclipse-plugin/updates/"/>
         <repository
             url="http://download.eclipse.org/technology/m2e/milestones/1.9"/>
+        <repository
+            url="http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/"/>
       </repositoryList>
       <repositoryList
           name="Oxygen">
